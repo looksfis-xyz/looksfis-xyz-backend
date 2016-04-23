@@ -5,3 +5,64 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+user = User.create!(
+  first_name: "tester first name",
+  last_name:  "tester last name",
+  email: "tester@email.com",
+  mobile_phone: "6666 6666",
+  password: "password",
+  password_confirmation: "password",
+  is_active: true
+)
+
+fishing_net = Category.create!(
+  name: "Fishing Net"
+)
+
+post = LostPost.create(
+  user: user,
+  is_complete: false,
+  title: "Lost a fishing net",
+  latitude: 22.246348,
+  longitude: 114.153593,
+  radius: 5, #km
+  report_date: (Time.now - 2.days)
+)
+
+fishing_gear = FishingGear.create!(
+  post:         post,
+  category:     fishing_net,
+
+  name:                       "A common fishing gear",
+  mesh_size:                  "1_finger_width",
+  length:                     10, #m
+  width:                      2, #m
+  color:                      "blue",
+  comment:         "No uniq thing",
+  production_country_alpha2:  "CN"
+)
+
+post_2 = LostPost.create!(
+  user: user,
+  is_complete: false,
+  title: "Lost a fishing net",
+  latitude: 22.246348,
+  longitude: 114.153593,
+  radius: 5, #km
+  report_date: (Time.now - 2.days)
+)
+
+fishing_gear_2 = FishingGear.create!(
+  post:         post_2,
+  category:     fishing_net,
+
+  name:                       "A common fishing gear 2",
+  mesh_size:                  "2_finger_width",
+  length:                     20, #m
+  width:                      4, #m
+  color:                      "Red",
+  comment:         "Tender Love",
+  production_country_alpha2:  "CN"
+)
+

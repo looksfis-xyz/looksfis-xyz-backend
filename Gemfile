@@ -11,7 +11,8 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'active_hash'
 gem 'rails_12factor', group: :production
 
-gem 'countries'
+gem 'countries', '1.2.5'
+gem 'geocoder', '1.3.4'
 
 group :development do
   gem "web-console"
