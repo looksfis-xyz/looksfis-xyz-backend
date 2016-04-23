@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         resources :posts,  only: [:create]
         patch 'posts/:id'                 => 'posts#update'
       end
+      post "login" => 'users#login'
     end
   end
 end

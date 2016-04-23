@@ -10,6 +10,15 @@ module Api
         end
       end
 
+      def login
+        @user = User.find_by_email(params[:user][:email].downcase)
+        if @user.present? && @user.authenticate(params[:user][:password])
+          render 'api/v1/users/create', status: :ok
+        else
+          render json: { base: "You email and password don't match." }, status: :unauthorized
+        end
+      end
+
     private
       def user_params
         params.require(:user).permit(:first_name, :last_name, :email, :mobile_phone, :password, :password_confirmation)
