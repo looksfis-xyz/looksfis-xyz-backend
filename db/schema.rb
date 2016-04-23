@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423025422) do
+ActiveRecord::Schema.define(version: 20160423034447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,12 +54,12 @@ ActiveRecord::Schema.define(version: 20160423025422) do
     t.uuid     "category_id"
     t.uuid     "post_id"
     t.string   "name"
-    t.string   "mash_size"
+    t.string   "mesh_size"
     t.decimal  "length"
     t.decimal  "width"
     t.decimal  "weight"
     t.string   "color"
-    t.text     "unique_description"
+    t.text     "comment"
     t.string   "production_country_alpha2"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -70,9 +70,10 @@ ActiveRecord::Schema.define(version: 20160423025422) do
 
   create_table "posts", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "user_id"
+    t.boolean  "is_complete"
     t.string   "title"
-    t.decimal  "longitude"
-    t.decimal  "latitude"
+    t.float    "longitude"
+    t.float    "latitude"
     t.decimal  "radius"
     t.string   "type"
     t.datetime "report_date"
@@ -81,6 +82,17 @@ ActiveRecord::Schema.define(version: 20160423025422) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "sessions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "user_id"
+    t.string   "token"
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sessions", ["token"], name: "index_sessions_on_token", using: :btree
+  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
   create_table "tags", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "category_id"
@@ -111,5 +123,6 @@ ActiveRecord::Schema.define(version: 20160423025422) do
   add_foreign_key "fishing_gears", "categories"
   add_foreign_key "fishing_gears", "posts"
   add_foreign_key "posts", "users"
+  add_foreign_key "sessions", "users"
   add_foreign_key "tags", "categories"
 end
