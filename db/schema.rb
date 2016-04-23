@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423011649) do
+ActiveRecord::Schema.define(version: 20160423025422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,16 @@ ActiveRecord::Schema.define(version: 20160423011649) do
   create_table "addresses", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "addressable_id"
     t.string   "addressable_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "kind"
+    t.boolean  "is_default",       default: true, null: false
+    t.string   "line_1"
+    t.string   "line_2"
+    t.string   "line_3"
+    t.string   "postal_code"
+    t.string   "city"
+    t.string   "state"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
@@ -32,16 +40,26 @@ ActiveRecord::Schema.define(version: 20160423011649) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "fishing_gear_tags", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "fishing_gear_id"
+    t.uuid     "tag_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "fishing_gear_tags", ["fishing_gear_id"], name: "index_fishing_gear_tags_on_fishing_gear_id", using: :btree
+  add_index "fishing_gear_tags", ["tag_id"], name: "index_fishing_gear_tags_on_tag_id", using: :btree
+
   create_table "fishing_gears", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "category_id"
     t.uuid     "post_id"
     t.string   "name"
-    t.string   "size"
-    t.string   "weight"
+    t.string   "mash_size"
+    t.decimal  "length"
+    t.decimal  "width"
+    t.decimal  "weight"
     t.string   "color"
-    t.string   "brand"
-    t.string   "model"
-    t.string   "unique_description"
+    t.text     "unique_description"
     t.string   "production_country_alpha2"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -88,6 +106,8 @@ ActiveRecord::Schema.define(version: 20160423011649) do
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
+  add_foreign_key "fishing_gear_tags", "fishing_gears"
+  add_foreign_key "fishing_gear_tags", "tags"
   add_foreign_key "fishing_gears", "categories"
   add_foreign_key "fishing_gears", "posts"
   add_foreign_key "posts", "users"

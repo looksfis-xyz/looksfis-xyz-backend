@@ -11,6 +11,8 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'active_hash'
 gem 'rails_12factor', group: :production
 
+gem 'countries'
+
 group :development do
   gem "web-console"
   gem "better_errors"

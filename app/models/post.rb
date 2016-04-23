@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
+  has_one    :fishing_gear
 
   validate   :user,         presence: true
   validate   :title,         presence: true

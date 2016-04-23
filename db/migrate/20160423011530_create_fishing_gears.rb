@@ -4,14 +4,14 @@ class CreateFishingGears < ActiveRecord::Migration
       t.belongs_to :category, type: :uuid, index: true, foreign_key: true
       t.belongs_to :post,     type: :uuid, index: true, foreign_key: true
 
-      t.string :name
-      t.string :size
-      t.string :weight
-      t.string :color
-      t.string :brand
-      t.string :model
-      t.string :unique_description
-      t.string :production_country_alpha2
+      t.string     :name
+      t.string     :mash_size
+      t.decimal    :length
+      t.decimal    :width
+      t.decimal    :weight
+      t.string     :color
+      t.text       :unique_description
+      t.string     :production_country_alpha2
 
       t.timestamps null: false
     end

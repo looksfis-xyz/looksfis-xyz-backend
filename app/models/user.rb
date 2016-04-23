@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :posts
+  has_one  :address, as: :addressable
+
   has_secure_password
 
   validate :first_name,            presence: true, length: {minimum: 1, maximum: 100}  
