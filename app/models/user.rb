@@ -11,8 +11,13 @@ class User < ActiveRecord::Base
   validates :password,              presence: true, length: {minimum: 1, maximum: 100}  
   validates :password_confirmation, presence: true, length: {minimum: 1, maximum: 100}  
   validates :is_active,             presence: true,                                     inclusion: { in: [true, false]}
+  before_validation :set_default_value
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+private
+  def set_default_value
+    self.is_active = true
   end
 end
