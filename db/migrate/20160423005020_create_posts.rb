@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration
 
       t.boolean  :is_complete
       t.string   :title
+      t.text     :address
       t.float    :longitude
       t.float    :latitude
       t.decimal  :radius

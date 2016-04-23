@@ -66,3 +66,25 @@ fishing_gear_2 = FishingGear.create!(
   production_country_alpha2:  "CN"
 )
 
+post_3 = LostPost.create!(
+  user: user,
+  is_complete: false,
+  title: "Lost a fishing net",
+  latitude: 35.634959,
+  longitude: 139.848568,
+  radius: 5, #km
+  report_date: (Time.now - 2.days)
+)
+
+fishing_gear_3 = FishingGear.create!(
+  post:         post_2,
+  category:     fishing_net,
+
+  name:                       "A common fishing gear 3 in Tykyo",
+  mesh_size:                  "3_finger_width",
+  length:                     20, #m
+  width:                      4, #m
+  color:                      "Red",
+  comment:                    "Tykyo",
+  production_country_alpha2:  "JP"
+)

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :posts
+  has_many :lost_posts
+  has_many :found_posts
   has_one  :address, as: :addressable
 
   has_secure_password

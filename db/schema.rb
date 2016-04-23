@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20160423034447) do
     t.uuid     "user_id"
     t.boolean  "is_complete"
     t.string   "title"
+    t.text     "address"
     t.float    "longitude"
     t.float    "latitude"
     t.decimal  "radius"
