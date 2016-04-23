@@ -12,6 +12,8 @@ class CreatePosts < ActiveRecord::Migration
       t.string   :type
       t.string   :incentive
       t.datetime :report_date
+      t.uuid     :founder_id
+      t.datetime :found_date
 
 
       t.timestamps null: false

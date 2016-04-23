@@ -5,8 +5,9 @@ Rails.application.routes.draw do
       resources :posts,    only: [:index]
       resources :users,    only: [:create]    do
         resources :lost_posts,  only: [:create]
-        resources :found_posts,  only: [:create]
+        # resources :found_posts,  only: [:create]
 
+        patch 'posts/:id/found'           => 'posts#found'
         patch 'posts/:id'                 => 'posts#update'
       end
       post "login" => 'users#login'

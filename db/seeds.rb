@@ -17,7 +17,16 @@ user = User.create!(
 )
 
 fishing_net = Category.create!(
-  name: "Fishing Net"
+  name: "Net",
+  code: 1
+)
+fishing_net = Category.create!(
+  name: "Pot",
+  code: 2
+)
+fishing_net = Category.create!(
+  name: "Rod",
+  code: 3
 )
 
 post = LostPost.create(

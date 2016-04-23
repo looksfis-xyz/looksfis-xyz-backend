@@ -4,6 +4,7 @@ class CreateFishingGears < ActiveRecord::Migration
       t.belongs_to :category, type: :uuid, index: true, foreign_key: true
       t.belongs_to :post,     type: :uuid, index: true, foreign_key: true
 
+      t.integer    :category_code
       t.string     :name
       t.string     :mesh_size
       t.decimal    :length

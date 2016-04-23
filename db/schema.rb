@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160423034447) do
 
   create_table "categories", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name"
+    t.integer  "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(version: 20160423034447) do
   create_table "fishing_gears", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "category_id"
     t.uuid     "post_id"
+    t.integer  "category_code"
     t.string   "name"
     t.string   "mesh_size"
     t.decimal  "length"
@@ -79,6 +81,8 @@ ActiveRecord::Schema.define(version: 20160423034447) do
     t.string   "type"
     t.string   "incentive"
     t.datetime "report_date"
+    t.uuid     "founder_id"
+    t.datetime "found_date"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
