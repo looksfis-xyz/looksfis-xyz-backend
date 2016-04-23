@@ -10,6 +10,7 @@ class CreatePosts < ActiveRecord::Migration
       t.float    :latitude
       t.decimal  :radius
       t.string   :type
+      t.string   :incentive
       t.datetime :report_date
 
 

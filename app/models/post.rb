@@ -12,5 +12,5 @@ class Post < ActiveRecord::Base
   validates   :report_date,  presence: true
 
   reverse_geocoded_by :latitude, :longitude
-  after_validation    :reverse_geocode
+  #after_validation    :reverse_geocode
 end

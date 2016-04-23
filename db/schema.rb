@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160423034447) do
     t.float    "latitude"
     t.decimal  "radius"
     t.string   "type"
+    t.string   "incentive"
     t.datetime "report_date"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

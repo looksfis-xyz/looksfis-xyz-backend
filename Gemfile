@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 ruby '2.2.2'
 gem 'rails', '4.2.3'
 
+gem 'rack-cors', require: 'rack/cors'
+
 gem 'pg'
 gem 'jbuilder', '~> 2.0'
 gem 'uglifier', '>= 1.3.0'

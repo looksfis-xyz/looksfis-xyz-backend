@@ -27,7 +27,8 @@ post = LostPost.create(
   latitude: 22.246348,
   longitude: 114.153593,
   radius: 5, #km
-  report_date: (Time.now - 2.days)
+  report_date: (Time.now - 2.days),
+  incentive: "cash 100USD"
 )
 
 fishing_gear = FishingGear.create!(
@@ -50,7 +51,8 @@ post_2 = LostPost.create!(
   latitude: 22.246348,
   longitude: 114.153593,
   radius: 5, #km
-  report_date: (Time.now - 2.days)
+  report_date: (Time.now - 2.days),
+  incentive: "Coupon 100USD for Book shops"
 )
 
 fishing_gear_2 = FishingGear.create!(
@@ -73,11 +75,12 @@ post_3 = LostPost.create!(
   latitude: 35.634959,
   longitude: 139.848568,
   radius: 5, #km
-  report_date: (Time.now - 2.days)
+  report_date: (Time.now - 2.days),
+  incentive: "Coupon 100USD for Book shops"
 )
 
 fishing_gear_3 = FishingGear.create!(
-  post:         post_2,
+  post:         post_3,
   category:     fishing_net,
 
   name:                       "A common fishing gear 3 in Tykyo",
